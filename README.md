@@ -18,9 +18,9 @@ $ /usr/bin/pip --version
 $ /usr/bin/nvidia-smi
 ```
 
-[4] If they all shows up, you are all done.
+[4] Run `chmod +x ./auto.sh` under the program folder.
 
-[5] Check the command list to learn how to use this script.
+[5] You are all done! Check the command list to learn how to use this script.
 
 #### [6] !!Importent: Buy me a cup of coffee ( :
 
