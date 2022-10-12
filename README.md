@@ -56,7 +56,7 @@ $ /usr/bin/nvidia-smi
 
 #### Bugs or errors.
 
-[1] If you get this error message when running python venv, please add `--always-copy` after `virtualenv venv` in the setup function, like this.
+[1] If you get this error message when running python venv, please add `--always-copy` after `virtualenv venv` in the setup function.
 
 ```bash
 + virtualenv venv
