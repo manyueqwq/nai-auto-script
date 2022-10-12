@@ -125,8 +125,8 @@ then
 		cloudflared tunnel --url localhost:6969
 		echo "Starting NovelAI ..." && sleep 3s
 		RunScriptFun
-    elif [ $1 == "all" ] && [ $2 == "cf" ]
-    then
+    	elif [ $1 == "all" ] && [ $2 == "cf" ]
+    	then
 		echo "Installing NovelAI Requirements ..." && sleep 3s
 		SetupScriptFun
 		echo "Installing Cloudflared ..." && sleep 3s
@@ -147,8 +147,8 @@ then
 		bore local 6969 --to bore.pub
 		echo "Starting NovelAI ..." && sleep 3s
 		RunScriptFun
-    elif [ $1 == "all" ] && [ $2 == "bore" ]
-    then
+    	elif [ $1 == "all" ] && [ $2 == "bore" ]
+    	then
 		echo "Installing NovelAI Requirements ..." && sleep 3s
 		SetupScriptFun
 		echo "Installing Bore.pub ..." && sleep 3s
