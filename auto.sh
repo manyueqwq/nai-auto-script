@@ -66,27 +66,27 @@ if [ -e /usr/bin/python ] && [ -e /usr/bin/pip ] && [ -e /usr/bin/nvidia-smi ]
 then
 
 	# Install NovelAI Requirements Only
-	if [ $1 -eq "setup" ]
+	if [ $1 == "setup" ]
 	then
 		echo "Installing NovelAI Requirements ..." && sleep 3s
 		SetupScriptFun
 	fi
 
 	# Start NovelAI Only
-	if [ $1 -eq "start" ]
+	if [ $1 == "start" ]
 	then
 		echo "Starting NovelAI ..." && sleep 3s
 		RunScriptFun
 	fi
 
 	# Run Command Proxy
-	if [ $1 -eq "proxy" ] && [ -z $2 ]
+	if [ $1 == "proxy" ] && [ -z $2 ]
 	then
 		echo "[cf|bore]"
 	fi
 
 	# Run Or Install Cloudflared
-	if [ $1 -eq "proxy" ] && [ $2 -eq "cf" ]
+	if [ $1 == "proxy" ] && [ $2 == "cf" ]
 	then
 		if [ -e /usr/bin/cloudflared ]
 		then
@@ -101,7 +101,7 @@ then
 	fi
 
 	# Run Or Install Bore.pub
-	if [ $1 -eq "proxy" ] && [ $2 -eq "bore" ]
+	if [ $1 == "proxy" ] && [ $2 == "bore" ]
 	then
 		if [ -e /usr/bin/bore ]
 		then
@@ -117,7 +117,7 @@ then
 
 	# Auto Setup Install Proxy And Start NovelAI
 	# Using Cloudflared As Proxy
-	if [ $1 -eq "all" ] && [ $2 -eq "cf" ] && [ -e /usr/bin/cloudflared ]
+	if [ $1 == "all" ] && [ $2 == "cf" ] && [ -e /usr/bin/cloudflared ]
 	then
 		echo "Installing NovelAI Requirements ..." && sleep 3s
 		SetupScriptFun
@@ -125,7 +125,7 @@ then
 		cloudflared tunnel --url localhost:6969
 		echo "Starting NovelAI ..." && sleep 3s
 		RunScriptFun
-    elif [ $1 -eq "all" ] && [ $2 -eq "cf" ]
+    elif [ $1 == "all" ] && [ $2 == "cf" ]
     then
 		echo "Installing NovelAI Requirements ..." && sleep 3s
 		SetupScriptFun
@@ -139,7 +139,7 @@ then
 
 	# Auto Setup Install Proxy And Start NovelAI
 	# Using Bore As Proxy
-	if [ $1 -eq "all" ] && [ $2 -eq "bore" ] && [ -e /usr/bin/bore ]
+	if [ $1 == "all" ] && [ $2 == "bore" ] && [ -e /usr/bin/bore ]
 	then
 		echo "Installing NovelAI Requirements ..." && sleep 3s
 		SetupScriptFun
@@ -147,7 +147,7 @@ then
 		bore local 6969 --to bore.pub
 		echo "Starting NovelAI ..." && sleep 3s
 		RunScriptFun
-    elif [ $1 -eq "all" ] && [ $2 -eq "bore" ]
+    elif [ $1 == "all" ] && [ $2 == "bore" ]
     then
 		echo "Installing NovelAI Requirements ..." && sleep 3s
 		SetupScriptFun
@@ -161,7 +161,7 @@ then
 
 	# Auto Setup Install Proxy And Start NovelAI
 	# Not Using Proxies [Default]
-	if [ $1 -eq "all" ] && [ -z $2 ]
+	if [ $1 == "all" ] && [ -z $2 ]
 	then
 		echo "Installing NovelAI Requirements ..." && sleep 3s
 		SetupScriptFun
