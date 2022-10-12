@@ -126,6 +126,7 @@ then
 		echo "Starting NovelAI ..." && sleep 3s
 		RunScriptFun
     elif [ $1 -eq "all" ] && [ $2 -eq "cf" ]
+    then
 		echo "Installing NovelAI Requirements ..." && sleep 3s
 		SetupScriptFun
 		echo "Installing Cloudflared ..." && sleep 3s
@@ -147,6 +148,7 @@ then
 		echo "Starting NovelAI ..." && sleep 3s
 		RunScriptFun
     elif [ $1 -eq "all" ] && [ $2 -eq "bore" ]
+    then
 		echo "Installing NovelAI Requirements ..." && sleep 3s
 		SetupScriptFun
 		echo "Installing Bore.pub ..." && sleep 3s
