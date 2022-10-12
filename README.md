@@ -69,7 +69,7 @@ SetupScriptFun(){
 	# Environment Setup
 	pip install virtualenv
 	set -ex
-    virtualenv venv --always-copy
+    	virtualenv venv --always-copy
 	. venv/bin/activate
 	pip install -r requirements.txt -i $PipSource
 }
