@@ -56,16 +56,14 @@ $ /usr/bin/nvidia-smi
 
 #### Bugs or errors.
 
-[1]
+[1] If you get this error message when running python venv, please add `--always-copy` after `virtualenv venv` in the setup function, like this.
 
-```
+```bash
 + virtualenv venv
 OSError: [Errno 38] Function not implemented: '/path/to/your/python' -> '/your/running/path/venv/bin/python'
 ```
 
-If you get this error message when running python venv, please add `--always-copy` after `virtualenv venv` in the setup function, like this.
-
-```
+```bash
 # Setup Script
 SetupScriptFun(){
 	# Environment Setup
