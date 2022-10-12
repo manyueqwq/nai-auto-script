@@ -51,3 +51,28 @@ $ /usr/bin/nvidia-smi
 [2] PipSource - Python Pip Repo
 
 ##### China boost proxy: https://pypi.tuna.tsinghua.edu.cn/simple from TUNA
+
+## Troubleshoot
+
+#### Bugs or errors.
+
+[1]
+
+```
++ virtualenv venv
+OSError: [Errno 38] Function not implemented: '/path/to/your/python' -> '/your/running/path/venv/bin/python'
+```
+
+If you get this error message when running python venv, please add `--always-copy` after `virtualenv venv` in the setup function, like this.
+
+```
+# Setup Script
+SetupScriptFun(){
+	# Environment Setup
+	pip install virtualenv
+	set -ex
+    virtualenv venv --always-copy
+	. venv/bin/activate
+	pip install -r requirements.txt -i $PipSource
+}
+```
