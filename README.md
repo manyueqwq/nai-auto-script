@@ -28,9 +28,9 @@ $ /usr/bin/nvidia-smi
 
 #### Teach you how to use this script.
 
-[1] ./auto.sh all [none|cf|bore] - The All In One command.
+[1] ./auto.sh all - The All In One command.
 
-##### It will finish the setup and start running, chose which proxy you want to use by select cf(CloudFlare Tunnel) or bore(Bore.pub) if you don't have a public ip address. Leave it blank to run only on local.
+##### It will finish the setup and start running.
 
 [2] ./auto.sh proxy [cf|bore] - Setup the proxy you choose.
 
