@@ -52,7 +52,7 @@ RunScriptFun(){
 	if [[ -f venv/bin/python ]]; then
 		PYTHON=venv/bin/python
 	else
-		PYTHON=python
+		PYTHON=$PythonLocation
 	fi
 	$PYTHON -m uvicorn --host 0.0.0.0 --port=6969 main:app
 }
@@ -60,11 +60,11 @@ RunScriptFun(){
 # Setup Script
 SetupScriptFun(){
 	# Environment Setup
-	pip install virtualenv
+	$PipLocation install virtualenv
 	set -ex
 	virtualenv venv
 	. venv/bin/activate
-	pip install -r requirements.txt -i $PipSource
+	$PipLocation install -r requirements.txt -i $PipSource
 }
 
 # Install Cloudflared
@@ -81,7 +81,7 @@ InstallBoreFun(){
 	echo "Bore.pub Installed! Location: /usr/bin/bore"
 }
 
-if [ -x $PythonLocation ] && [ -x $PipLocation ] && [ -x $SmiLocation ]
+if [ -f $PythonLocation ] && [ -f $PipLocation ] && [ -f $SmiLocation ]
 then
 
 	# Install NovelAI Requirements Only
@@ -107,7 +107,7 @@ then
 	# Run Or Install Cloudflared
 	if [ $1 == "proxy" ] && [ $2 == "cf" ]
 	then
-		if [ -x /usr/bin/cloudflared ]
+		if [ -f /usr/bin/cloudflared ]
 		then
 			echo "Starting Cloudflared ..." && sleep 3s
 			cloudflared tunnel --url localhost:6969
@@ -122,7 +122,7 @@ then
 	# Run Or Install Bore.pub
 	if [ $1 == "proxy" ] && [ $2 == "bore" ]
 	then
-		if [ -x /usr/bin/bore ]
+		if [ -f /usr/bin/bore ]
 		then
 			echo "Starting Bore.pub ..." && sleep 3s
 			bore local 6969 --to bore.pub
