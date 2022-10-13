@@ -116,50 +116,6 @@ then
 	fi
 
 	# Auto Setup Install Proxy And Start NovelAI
-	# Using Cloudflared As Proxy
-	if [ $1 == "all" ] && [ $2 == "cf" ] && [ -e /usr/bin/cloudflared ]
-	then
-		echo "Installing NovelAI Requirements ..." && sleep 3s
-		SetupScriptFun
-		echo "Starting Cloudflared ..." && sleep 3s
-		cloudflared tunnel --url localhost:6969
-		echo "Starting NovelAI ..." && sleep 3s
-		RunScriptFun
-    	elif [ $1 == "all" ] && [ $2 == "cf" ]
-    	then
-		echo "Installing NovelAI Requirements ..." && sleep 3s
-		SetupScriptFun
-		echo "Installing Cloudflared ..." && sleep 3s
-		InstallCloudflaredFun
-		echo "Starting Cloudflared ..." && sleep 3s
-		cloudflared tunnel --url localhost:6969
-		echo "Starting NovelAI ..." && sleep 3s
-		RunScriptFun
-	fi
-
-	# Auto Setup Install Proxy And Start NovelAI
-	# Using Bore As Proxy
-	if [ $1 == "all" ] && [ $2 == "bore" ] && [ -e /usr/bin/bore ]
-	then
-		echo "Installing NovelAI Requirements ..." && sleep 3s
-		SetupScriptFun
-		echo "Starting Bore.pub ..." && sleep 3s
-		bore local 6969 --to bore.pub
-		echo "Starting NovelAI ..." && sleep 3s
-		RunScriptFun
-    	elif [ $1 == "all" ] && [ $2 == "bore" ]
-    	then
-		echo "Installing NovelAI Requirements ..." && sleep 3s
-		SetupScriptFun
-		echo "Installing Bore.pub ..." && sleep 3s
-		InstallBoreFun
-		echo "Starting Bore.pub ..." && sleep 3s
-		bore local 6969 --to bore.pub
-		echo "Starting NovelAI ..." && sleep 3s
-		RunScriptFun
-	fi
-
-	# Auto Setup Install Proxy And Start NovelAI
 	# Not Using Proxies [Default]
 	if [ $1 == "all" ] && [ -z $2 ]
 	then
