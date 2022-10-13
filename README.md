@@ -8,21 +8,13 @@
 
 [1] Put the auto.sh script under the official program folder. (Find it Yourself)
 
-[2] Makesure you have Python >= 3.8, Python3 Pip, Nvidia Driver Installed.
+[2] Makesure you have Python >= 3.8, Python3 Pip, Nvidia Driver Installed and set the $PATH correctly.
 
-[3] Try running these commands in your ssh to test [2].
+[3] Run `chmod +x ./auto.sh` under the program folder to give the necessary permissions.
 
-```bash
-$ /usr/bin/python --version
-$ /usr/bin/pip --version
-$ /usr/bin/nvidia-smi
-```
+[4] You are all done! Check the command list to learn how to use this script.
 
-[4] Run `chmod +x ./auto.sh` under the program folder.
-
-[5] You are all done! Check the command list to learn how to use this script.
-
-#### [6] !!Importent: Buy me a cup of coffee ( :
+#### [5] !!Importent: Buy me a cup of coffee ( :
 
 ## Command List
 
@@ -44,13 +36,19 @@ $ /usr/bin/nvidia-smi
 
 #### Options in the script that can be changed.
 
-[1] GitHubBoost - GitHub Address, Default: https://github.com
+[1] GitHubBoost - GitHub Address, Default: https://github.com.
 
-##### Some other proxies you can choose: https://ghproxy.com, https://gitclone.com, https://fastgit.org, https://gh.baiyi.icu (Mine)
+##### Some other proxies you can choose: https://ghproxy.com, https://gitclone.com, https://fastgit.org, https://gh.baiyi.icu (Mine).
 
-[2] PipSource - Python Pip Repo
+[2] PipSource - Python Pip Repo.
 
-##### China boost proxy: https://pypi.tuna.tsinghua.edu.cn/simple from TUNA
+##### China boost proxy: https://pypi.tuna.tsinghua.edu.cn/simple from TUNA.
+
+[3] PythonLocation - Python Binary Location, Auto Detect In $PATH.
+
+[4] PipLocation - Python Pip Location, Auto Detect In $PATH.
+
+[5] SmiLocation - Nvidia-SMI Location, Auto Detect In $PATH.
 
 ## Troubleshoot
 
