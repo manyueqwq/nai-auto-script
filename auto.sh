@@ -3,13 +3,32 @@
 # Blog.BaiYi.ICU
 #-----------------
 
+#-----------------
 # Script Options
+#-----------------
 # GitHub Boost(Default: https://github.com)
 # China: ghproxy.com, gitclone.com, fastgit.org, gh.baiyi.icu
 GitHubBoost="https://github.com"
+#-----------------
 # Python Pip Source(Default: https://pypi.org/simple)
 # China: https://pypi.tuna.tsinghua.edu.cn/simple(TUNA)
 PipSource="https://pypi.org/simple"
+#-----------------
+# Python Binary Location
+# Default: /usr/bin/python
+# Command: which python
+PythonLocation=$(which python)
+#-----------------
+# Python Pip Location
+# Default: /usr/bin/pip
+# Command: which pip
+PipLocation=$(which pip)
+#-----------------
+# Nvidia-SMI Location
+# Default: /usr/bin/nvidia-smi
+# Command: which nvidia-smi
+SmiLocation=$(which nvidia-smi)
+#-----------------
 
 # Run Script
 RunScriptFun(){
@@ -62,7 +81,7 @@ InstallBoreFun(){
 	echo "Bore.pub Installed! Location: /usr/bin/bore"
 }
 
-if [ -e /usr/bin/python ] && [ -e /usr/bin/pip ] && [ -e /usr/bin/nvidia-smi ]
+if [ -x $PythonLocation ] && [ -x $PipLocation ] && [ -x $SmiLocation ]
 then
 
 	# Install NovelAI Requirements Only
@@ -88,7 +107,7 @@ then
 	# Run Or Install Cloudflared
 	if [ $1 == "proxy" ] && [ $2 == "cf" ]
 	then
-		if [ -e /usr/bin/cloudflared ]
+		if [ -x /usr/bin/cloudflared ]
 		then
 			echo "Starting Cloudflared ..." && sleep 3s
 			cloudflared tunnel --url localhost:6969
@@ -103,7 +122,7 @@ then
 	# Run Or Install Bore.pub
 	if [ $1 == "proxy" ] && [ $2 == "bore" ]
 	then
-		if [ -e /usr/bin/bore ]
+		if [ -x /usr/bin/bore ]
 		then
 			echo "Starting Bore.pub ..." && sleep 3s
 			bore local 6969 --to bore.pub
