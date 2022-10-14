@@ -29,6 +29,12 @@ PipLocation=$(which pip)
 # Command: which nvidia-smi
 SmiLocation=$(which nvidia-smi)
 #-----------------
+# Disable sentry logging
+export ERROR_REPORTING=FALSE
+#-----------------
+# Do not reinstall existing pip packages on Debian/Ubuntu
+export PIP_IGNORE_INSTALLED=0
+#-----------------
 
 # Run Script
 RunScriptFun(){
