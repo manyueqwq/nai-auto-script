@@ -9,6 +9,8 @@ import platform
 dir_repos = "repositories"
 python = sys.executable
 git = os.environ.get('GIT', "git")
+pipsource = os.environ.get('PIPSOURCE', "https://pypi.org/simple")
+githubbost = os.environ.get(githubbost, "https://github.com")
 
 
 def extract_arg(args, name):
@@ -86,12 +88,12 @@ def git_clone(url, dir, name, commithash=None):
 
 
 def prepare_enviroment():
-    torch_command = os.environ.get('TORCH_COMMAND', "pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113 - i " + 'PIPSOURCE')
+    torch_command = os.environ.get('TORCH_COMMAND', "pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113 -i " + pipsource)
     requirements_file = os.environ.get('REQS_FILE', "requirements_versions.txt")
     commandline_args = os.environ.get('COMMANDLINE_ARGS', "")
 
-    gfpgan_package = os.environ.get('GFPGAN_PACKAGE', "git+" + 'GITHUBBOOST' + "/TencentARC/GFPGAN.git@8d2447a2d918f8eba5a4a01463fd48e45126a379")
-    clip_package = os.environ.get('CLIP_PACKAGE',  "git+" + 'GITHUBBOOST' + "/openai/CLIP.git@d50d76daa670286dd6cacf3bcd80b5e4823fc8e1")
+    gfpgan_package = os.environ.get('GFPGAN_PACKAGE', "git+" + githubbost + "/TencentARC/GFPGAN.git@8d2447a2d918f8eba5a4a01463fd48e45126a379")
+    clip_package = os.environ.get('CLIP_PACKAGE',  "git+" + githubbost + "/openai/CLIP.git@d50d76daa670286dd6cacf3bcd80b5e4823fc8e1")
 
     stable_diffusion_commit_hash = os.environ.get('STABLE_DIFFUSION_COMMIT_HASH', "69ae4b35e0a0f6ee1af8bb9a5d0016ccb27e36dc")
     taming_transformers_commit_hash = os.environ.get('TAMING_TRANSFORMERS_COMMIT_HASH', "24268930bf1dce879235a7fddd0b2355b84d7ea6")
@@ -128,23 +130,23 @@ def prepare_enviroment():
 
     if not is_installed("xformers") and xformers and platform.python_version().startswith("3.10"):
         if platform.system() == "Windows":
-            run_pip("install " + 'GITHUBBOOST' +"/C43H66N12O12S2/stable-diffusion-webui/releases/download/c/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl", "xformers")
+            run_pip("install " + githubbost +"/C43H66N12O12S2/stable-diffusion-webui/releases/download/c/xformers-0.0.14.dev0-cp310-cp310-win_amd64.whl", "xformers")
         elif platform.system() == "Linux":
             run_pip("install xformers", "xformers")
 
     if not is_installed("deepdanbooru") and deepdanbooru:
-        run_pip("install git+" + 'GITHUBBOOST' + "/KichangKim/DeepDanbooru.git@edf73df4cdaeea2cf00e9ac08bd8a9026b7a7b26#egg=deepdanbooru[tensorflow] tensorflow==2.10.0 tensorflow-io==0.27.0", "deepdanbooru")
+        run_pip("install git+" + githubbost + "/KichangKim/DeepDanbooru.git@edf73df4cdaeea2cf00e9ac08bd8a9026b7a7b26#egg=deepdanbooru[tensorflow] tensorflow==2.10.0 tensorflow-io==0.27.0", "deepdanbooru")
 
     if not is_installed("pyngrok") and ngrok:
         run_pip("install pyngrok", "ngrok")
 
     os.makedirs(dir_repos, exist_ok=True)
 
-    git_clone('GITHUBBOOST' + "/CompVis/stable-diffusion.git", repo_dir('stable-diffusion'), "Stable Diffusion", stable_diffusion_commit_hash)
-    git_clone('GITHUBBOOST' + "/CompVis/taming-transformers.git", repo_dir('taming-transformers'), "Taming Transformers", taming_transformers_commit_hash)
-    git_clone('GITHUBBOOST' + "/crowsonkb/k-diffusion.git", repo_dir('k-diffusion'), "K-diffusion", k_diffusion_commit_hash)
-    git_clone('GITHUBBOOST' + "/sczhou/CodeFormer.git", repo_dir('CodeFormer'), "CodeFormer", codeformer_commit_hash)
-    git_clone('GITHUBBOOST' + "/salesforce/BLIP.git", repo_dir('BLIP'), "BLIP", blip_commit_hash)
+    git_clone(githubbost + "/CompVis/stable-diffusion.git", repo_dir('stable-diffusion'), "Stable Diffusion", stable_diffusion_commit_hash)
+    git_clone(githubbost + "/CompVis/taming-transformers.git", repo_dir('taming-transformers'), "Taming Transformers", taming_transformers_commit_hash)
+    git_clone(githubbost + "/crowsonkb/k-diffusion.git", repo_dir('k-diffusion'), "K-diffusion", k_diffusion_commit_hash)
+    git_clone(githubbost + "/sczhou/CodeFormer.git", repo_dir('CodeFormer'), "CodeFormer", codeformer_commit_hash)
+    git_clone(githubbost + "/salesforce/BLIP.git", repo_dir('BLIP'), "BLIP", blip_commit_hash)
 
     if not is_installed("lpips"):
         run_pip(f"install -r {os.path.join(repo_dir('CodeFormer'), 'requirements.txt')}", "requirements for CodeFormer")

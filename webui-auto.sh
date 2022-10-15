@@ -1,4 +1,7 @@
 #!/bin/bash
+#-----------------
+# Blog.BaiYi.ICU
+#-----------------
 
 #-----------------
 # Script Options
@@ -56,7 +59,8 @@ export LAUNCH_SCRIPT="launch.py"
 
 # Run Script
 RunScriptFun(){
-    if [[ -f venv/bin/python ]]; then
+    if [[ -f venv/bin/python ]]
+    then
         PYTHON=venv/bin/python
     else
         PYTHON=$PythonLocation
@@ -66,6 +70,7 @@ RunScriptFun(){
 
 # Setup Script
 SetupScriptFun(){
+
     # Environment Setup
     $PipLocation install virtualenv
     set -ex
@@ -75,7 +80,7 @@ SetupScriptFun(){
 }
 
 # Install Cloudflared
-    InstallCloudflaredFun(){
+InstallCloudflaredFun(){
     curl -Lo /usr/bin/cloudflared $GitHubBoost/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /usr/bin/cloudflared
     cloudflared version
     echo "Cloudflared Installed! Location: /usr/bin/cloudflared"
@@ -87,7 +92,6 @@ InstallBoreFun(){
     bore --version
     echo "Bore.pub Installed! Location: /usr/bin/bore"
 }
-
 if [ -f $PythonLocation ] && [ -f $PipLocation ] && [ -f $SmiLocation ]
 then
 
